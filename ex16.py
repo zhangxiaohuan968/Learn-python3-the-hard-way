@@ -9,10 +9,11 @@ print("If you do want that, hit RETURN.")
 input("?")
 
 print("Opening the file...")
-target = open(filename, 'w')
+target = open(filename, 'w')  # w参数表示打开一个文件只用于写入。
+#如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
 
 print("Truncating the file. Goodbye!")
-target.truncate()
+target.truncate()  # 清空文件
 
 print("Now I'm going to ask you for three lines.")
 

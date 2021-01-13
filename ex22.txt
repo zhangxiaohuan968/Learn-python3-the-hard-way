@@ -1,0 +1,102 @@
+小结
+1、print()打印
+2、print(f"Let's talk about {my_name}.")
+binary = "binary"
+do_not = "don't"
+y = f"Those who know {binary} and those who {do_not}."
+3、.format()
+hilarious = False
+joke_evaluation = "Isn't that joke so funny?! {}"
+print(joke_evaluation.format(hilarious)) # Isn't that joke so funny?! False
+
+print("Its fleece was white as {}.".format('snow')) # Its fleece was white as snow.
+
+formatter = "{} {} {} {}"
+print(formatter.format("one", "two", "three", "four"))# one two three four
+
+4、字符串拼接
+w = "This is the left side of ..."
+e = "a string with a right side."
+print(w + e) # This is the left side of ...a string with a right side.
+5、打印"""三引号内的内容，格式不变
+print("""
+There's something going on here.
+With the three double-quotes.
+We'll be able to type as much as we like.
+Even 4 lines if we want, or 5, or 6.
+""")
+
+"""
+There's something going on here.
+With the three double-quotes.
+We'll be able to type as much as we like.
+Even 4 lines if we want, or 5, or 6.
+"""
+6、转义字符escape sequences
+tabby_cat = "\tI'm tabbed in."  #         I'm tabbed in.
+# 三引号中的' "单引号、双引号不用转义
+fat_cat = '''
+I'll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+'''
+7、end=' '表示这行没有结束，接着下一条代码的结果
+print("How old are you?", end=' ')
+age = input()
+8、input()
+age = input("How old are you? ")
+9、argv从命令行中获取参数
+from sys import argv
+# read the WYSS section for how to run this
+script, first, second, third = argv
+
+print("The script is called:", script)
+10、
+prompt = '> '  # 提示
+lives = input(prompt)
+11、file
+txt = open(filename)
+txt.read()
+txt.write(indata)
+txt.close()
+target = open(filename, 'w')  # w表示打开一个文件只用于写入
+#如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+t	文本模式 (默认)。
+x	写模式，新建一个文件，如果该文件已存在则会报错。
+b	二进制模式。
++	打开一个文件进行更新(可读可写)。
+U	通用换行模式（不推荐）。
+r	以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。
+rb	以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。一般用于非文本文件如图片等。
+r+	打开一个文件用于读写。文件指针将会放在文件的开头。
+rb+	以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。一般用于非文本文件如图片等。
+w	打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+wb	以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。一般用于非文本文件如图片等。
+w+	打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+wb+	以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。一般用于非文本文件如图片等。
+a	打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。
+ab	以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。
+a+	打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。
+ab+	以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。
+target.truncate()  # 清空文件
+
+indata = txt.read()
+print(f"The input file is {len(indata)} bytes long")
+
+# file.seek()方法用于移动文件读取指针到指定位置
+def rewind(f):
+    # 方法语法fileObject.seek(offset[, whence])
+    # offset -- 开始的偏移量，也就是代表需要移动偏移的字节数
+    # whence：可选，默认值为 0。给offset参数一个定义，表示要从哪个位置开始偏移；
+    # 0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起
+    # 如果操作成功，则返回新的文件位置，如果操作失败，则函数返回 -1
+    f.seek(0)
+12、
+from os.path import exists
+print(f"Does the output file exists? {exists(to_file)}")  #判断一个文件存不存在
+13、函数def
+# this one is like your scripts with argv
+def print_two(*args):
+    arg1, arg2 = args
+    print(f"arg1: {arg1}, arg2: {arg2}")
